@@ -1,7 +1,10 @@
+import Todo from "./components/Todo";
+import "./App.css";
+
 function App() {
   return (
     <div>
-      <h1>REACT CHROME EXTENSION SETTING!~</h1>
+      <Todo/>
     </div>
   );
 }
