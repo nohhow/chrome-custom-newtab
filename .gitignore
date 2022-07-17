@@ -50,4 +50,7 @@ psd
 thumb
 sketch
 
+# env file
+.env
+
 # End of https://www.toptal.com/developers/gitignore/api/macos,react
