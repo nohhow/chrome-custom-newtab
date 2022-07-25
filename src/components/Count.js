@@ -8,7 +8,7 @@ class Count extends Component {
   }
   render() {
     return (
-      <div className="w-full p-6 m-4 bg-white rounded shadow-sm lg:w-3/4 lg:max-w-lg">
+      <div className="w-96 p-6 bg-white rounded shadow-sm m-4">
           <h1 className="mb-3">서울 생활 끝</h1>
           <div className="mb-3"><mark>{this.state.deadline}</mark></div>
           <Clock deadline={this.state.deadline} />

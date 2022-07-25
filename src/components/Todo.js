@@ -44,7 +44,7 @@ function Todo() {
     localStorage.setItem("todoData", JSON.stringify(todoData));
   }, [todoData]);
   return (
-    <div className="w-full p-6 m-4 bg-white rounded shadow-sm lg:w-3/4 lg:max-w-lg">
+    <div className="w-96 p-6 bg-white rounded shadow-sm m-4">
       <div className="flex justify-between mb-3 items-center">
         <h1>할 일 목록</h1>
         <button

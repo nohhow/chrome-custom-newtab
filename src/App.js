@@ -7,10 +7,16 @@ function App() {
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen bg-blue-100">
       <h1 className="text-2xl font-monos mb-5">행복한 하루</h1>
-      <Count />
-      <Todo />
-      <Weather/>
-      <Cute/>
+      <div className="flex flex-row justify-center">
+        <div>
+        <Weather/>
+        <Count />
+        <Todo />
+        </div>
+        <div>
+        <Cute/>
+      </div>
+      </div>
     </div>
   );
 }
