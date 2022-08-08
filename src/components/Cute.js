@@ -19,8 +19,10 @@ function Cute() {
         <h1>귀여움 충전</h1>
       </div>
       <div>
-        {meowImage!=="" ? (
-          <img className="rounded" src={meowImage} alt="고양이" />
+        {meowImage !== "" ? (
+          <a href={meowImage}>
+            <img className="rounded" src={meowImage} alt="고양이" />
+          </a>
         ) : (
           <div role="status" class="text-center">
             <svg
