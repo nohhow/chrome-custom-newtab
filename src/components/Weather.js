@@ -17,7 +17,7 @@ function Weather() {
   return (
     <div className="w-96 p-6 bg-white rounded shadow-sm m-4">
       <h1 className="mb-3">지금 서울 날씨</h1>
-      <p>{weatherData ? weatherData.weather[0].main : "Loading..."}, {weatherData ? Math.floor(weatherData.main.temp - 273.15) : 0}°C</p>
+      <p>{weatherData ? weatherData.weather[0].main : "Loading..."}, <span className="text-xl">{weatherData ? Math.floor(weatherData.main.temp - 273.15) : 0}°C</span></p>
     </div>
   );
 }
