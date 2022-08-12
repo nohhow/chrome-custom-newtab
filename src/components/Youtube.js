@@ -1,0 +1,65 @@
+import React, { useState } from "react";
+
+function Youtube() {
+  const [youtubeUrl, setYoutubeUrl] = useState(() => {
+    const localData = localStorage.getItem("youtubeUrl");
+    const initialData = JSON.parse(localData);
+    return initialData ? initialData : "";
+  });
+
+  const [value, setValue] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setYoutubeUrl("https://www.youtube.com/embed/"+value.slice(-11));
+    localStorage.setItem("youtubeUrl", JSON.stringify(youtubeUrl));
+  };
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+  const handleDelete = () => {
+    setYoutubeUrl("");
+    setValue("");
+  };
+
+  return (
+    <div className="w-96 p-6 bg-white rounded shadow-sm m-4">
+      <div className="flex justify-between mb-2">
+        <h1 className="mb-3">유튜브</h1>
+        <button className="p-2 text-white bg-red-200 hover:bg-red-400 shadow-md rounded" onClick={()=>{handleDelete()}}>
+          X
+        </button>
+      </div>
+      {youtubeUrl === "" ? (
+        <div>
+          <form onSubmit={handleSubmit} className="flex pt-2">
+            <input
+              type="text"
+              name="value"
+              className="w-full px-3 py-2 mr-4 text-gray-500 border rounded shadow"
+              placeholder="youtube url을 입력하세요."
+              value={value}
+              onChange={handleChange}
+            />
+            <input
+              className="p-2 text-blue-400 border-2 border-blue-400 rounded hover:text-white hover:bg-blue-200"
+              type="submit"
+              value="입력"
+            />
+          </form>
+        </div>
+      ) : (
+        <iframe
+          width="100%"
+          src={youtubeUrl}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      )}
+    </div>
+  );
+}
+
+export default Youtube;

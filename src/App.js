@@ -4,6 +4,7 @@ import Todo from "./components/Todo";
 import Weather from "./components/Weather";
 import Cute from "./components/Cute";
 import GitContributionGraph from "./components/GitContributionGraph";
+import Youtube from "./components/Youtube";
 function App() {
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen bg-blue-100">
@@ -19,6 +20,9 @@ function App() {
         </div>
         <div>
           <Cute />
+        </div>
+        <div>
+          <Youtube />
         </div>
       </div>
     </div>
