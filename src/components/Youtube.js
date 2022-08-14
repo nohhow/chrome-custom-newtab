@@ -50,6 +50,8 @@ function Youtube() {
               value="입력"
             />
           </form>
+          <br/>
+          <p className="text-gray-500">저작권 문제로 영상이 재생되지 않을 수 있습니다.</p>
         </div>
       ) : (
         <iframe
