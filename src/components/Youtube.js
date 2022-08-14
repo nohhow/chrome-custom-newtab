@@ -11,22 +11,25 @@ function Youtube() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setYoutubeUrl("https://www.youtube.com/embed/"+value.slice(-11));
-    localStorage.setItem("youtubeUrl", JSON.stringify(youtubeUrl));
+    const url = "https://www.youtube.com/embed/"+value.slice(-11);
+    setYoutubeUrl(url);
+    localStorage.setItem("youtubeUrl", JSON.stringify(url));
   };
   const handleChange = (e) => {
     setValue(e.target.value);
   };
+
   const handleDelete = () => {
     setYoutubeUrl("");
     setValue("");
+    localStorage.removeItem("youtubeUrl");
   };
 
   return (
     <div className="w-96 p-6 bg-white rounded shadow-sm m-4">
       <div className="flex justify-between mb-2">
         <h1 className="mb-3">유튜브</h1>
-        <button className="p-2 text-white bg-red-200 hover:bg-red-400 shadow-md rounded" onClick={()=>{handleDelete()}}>
+        <button className="p-2 text-white bg-red-200 hover:bg-red-400 shadow-md rounded" onClick={handleDelete}>
           X
         </button>
       </div>

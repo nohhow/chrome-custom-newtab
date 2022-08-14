@@ -5,7 +5,6 @@ function Cute() {
   const [meowImage, setMeowImage] = useState("");
   const getMeow = async () => {
     const response = await axios.get("https://aws.random.cat/meow");
-    console.log(response.data.file);
     setMeowImage(response.data.file);
   };
 
@@ -24,10 +23,10 @@ function Cute() {
             <img className="rounded" src={meowImage} alt="고양이" />
           </a>
         ) : (
-          <div role="status" class="text-center">
+          <div role="status" className="text-center">
             <svg
               aria-hidden="true"
-              class="mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+              className="mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
               viewBox="0 0 100 101"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +40,7 @@ function Cute() {
                 fill="currentFill"
               />
             </svg>
-            <span class="sr-only">Loading...</span>
+            <span className="sr-only">Loading...</span>
           </div>
         )}
       </div>
