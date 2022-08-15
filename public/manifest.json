@@ -1,6 +1,6 @@
 {
-  "name": "한남대학교 종강 시계",
-  "description": "종강 시계, 공지사항, 바로가기",
+  "name": "크롬 새 탭 커스텀",
+  "description": "다양한 모듈로 나만의 새 탭을 만들 수 있어요.",
   "version": "1.0.0",
   "short_name": "확장프로그램",
   "icons": {
@@ -14,6 +14,8 @@
     "default_popup":"index.html"
   },
   "permissions": [
+    "<all_urls>",
+    "topSites"
  ],
  "chrome_url_overrides" : {
   "newtab" : "index.html"
