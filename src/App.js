@@ -1,11 +1,11 @@
 import "./App.css";
-import Count from "./components/Count";
-import Todo from "./components/Todo";
 import Weather from "./components/Weather";
 import Cute from "./components/Cute";
 import GitContributionGraph from "./components/GitContributionGraph";
 import Youtube from "./components/Youtube";
 import TopSite from "./components/TopSite";
+import Todo from "./components/TodoList/Todo";
+import NewCount from "./components/DdayCounter/NewCount";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <div>
           <Weather />
           <GitContributionGraph />
-          <Count />
+          <NewCount />
           <Todo />
         </div>
         <div>
