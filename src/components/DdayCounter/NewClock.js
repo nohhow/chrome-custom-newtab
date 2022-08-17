@@ -27,9 +27,8 @@ function NewClock({deadline}) {
       }
 
     useEffect(() => {
-        getTimeUntil(deadline);
         setInterval(() => getTimeUntil(deadline), 1000);
-    }, [time, deadline]);
+    }, [deadline]);
 
   return (
       <div>
