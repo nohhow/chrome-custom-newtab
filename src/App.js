@@ -6,6 +6,7 @@ import Youtube from "./components/Youtube";
 import TopSite from "./components/TopSite";
 import Todo from "./components/TodoList/Todo";
 import NewCount from "./components/DdayCounter/NewCount";
+import CountingLetters from "./components/CountingLetters";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <div>
           <Youtube />
           <TopSite />
+          <CountingLetters/>
         </div>
       </div>
     </div>
