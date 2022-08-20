@@ -56,6 +56,7 @@ function Youtube() {
       ) : (
         <iframe
           width="100%"
+          height="100%"
           src={youtubeUrl}
           title="YouTube video player"
           frameborder="0"
