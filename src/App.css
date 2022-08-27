@@ -9,6 +9,12 @@
     font-style: normal;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+#phrase{
+    font-family: 'Abril Fatface', cursive;
+}
+
 #top-title{
     font-family: 'TmonMonsori';
 }

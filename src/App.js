@@ -7,6 +7,7 @@ import TopSite from "./components/TopSite";
 import Todo from "./components/TodoList/Todo";
 import NewCount from "./components/DdayCounter/NewCount";
 import CountingLetters from "./components/CountingLetters";
+import Phrase from "./components/Phrase";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Todo />
         </div>
         <div>
+          <Phrase />
           <Cute />
         </div>
         <div>
