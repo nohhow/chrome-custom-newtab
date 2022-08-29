@@ -36,3 +36,12 @@ background-size: 100% 100%;
 }
 /*형광펜 위로 올라오는 에니메애션:끝*/
 /* 출처 : https://goodbypoor.tistory.com/162 */
+
+
+
+.add-button{
+    background-color: #dfd7d4;
+    padding: 10px;
+    height: 100%;
+    width: 30%;
+}

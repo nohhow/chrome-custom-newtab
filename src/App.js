@@ -8,6 +8,7 @@ import Todo from "./components/TodoList/Todo";
 import NewCount from "./components/DdayCounter/NewCount";
 import CountingLetters from "./components/CountingLetters";
 import Phrase from "./components/Phrase";
+import Shortcut from "./components/Shortcut";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <div>
           <Youtube />
           <TopSite />
+          <Shortcut />
           <CountingLetters/>
         </div>
       </div>
