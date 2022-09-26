@@ -3,7 +3,11 @@ import favicon from "../image/favicon.png";
 import ShortcutModal from "./ShortcutModal/ShortcutModal";
 
 function Shortcut() {
-  const [sites, setSites] = useState(["","",""]);
+  const [sites, setSites] = useState(() => {
+    const localData = localStorage.getItem("shortcut-sites");
+    const initialData = JSON.parse(localData);
+    return initialData ? initialData : ["","",""];
+  });
   const [modalOpen, setModalOpen] = useState(false);
   const [value, setValue] = useState("");
   const [index, setIndex] = useState("");
@@ -12,7 +16,9 @@ function Shortcut() {
     e.preventDefault();
     const new_sites = sites;
     new_sites[index] = value;
+    setValue("");
     setSites(new_sites);
+    localStorage.setItem("shortcut-sites", JSON.stringify(new_sites));
   }
 
   const handleClick = (e) => {
@@ -27,7 +33,6 @@ function Shortcut() {
   const setSrc = (url) => {
     const regex = /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi;
     var result_url = url.match(regex);
-  
     return result_url+'/favicon.ico';
   }
 
