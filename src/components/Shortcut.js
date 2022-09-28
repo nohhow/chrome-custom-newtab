@@ -40,14 +40,14 @@ function Shortcut() {
     <div className="w-96 p-6 bg-white rounded shadow-sm m-4">
       <h1 className="mb-3">바로 가기</h1>
       <div className="flex justify-between">
-        <button className="shortcut-button" onClick={(e)=>handleClick(e)}>
-            <img src={sites[0] ? setSrc(sites[0]):favicon} alt="plus-button" id="0" />
+        <button className="shortcut-button rounded-xl" onClick={(e)=>handleClick(e)}>
+            <img className="shortcut-img mx-auto" src={sites[0] ? setSrc(sites[0]):favicon} alt="plus-button" id="0" />
         </button>
-        <button className="shortcut-button"  onClick={(e)=>handleClick(e)}>
-            <img src={sites[1] ? setSrc(sites[1]):favicon} alt="plus-button" id="1"/>
+        <button className="shortcut-button rounded-xl"  onClick={(e)=>handleClick(e)}>
+            <img className="shortcut-img mx-auto" src={sites[1] ? setSrc(sites[1]):favicon} alt="plus-button" id="1"/>
         </button>
-        <button className="shortcut-button"  onClick={(e)=>handleClick(e)}>
-            <img src={sites[2] ? setSrc(sites[2]):favicon} alt="plus-button" id="2"/>
+        <button className="shortcut-button rounded-xl"  onClick={(e)=>handleClick(e)}>
+            <img className="shortcut-img mx-auto" src={sites[2] ? setSrc(sites[2]):favicon} alt="plus-button" id="2"/>
         </button>
       </div>
       {modalOpen ? (
