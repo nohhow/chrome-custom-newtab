@@ -41,13 +41,13 @@ function Shortcut() {
       <h1 className="mb-3">바로 가기</h1>
       <div className="flex justify-between">
         <button className="shortcut-button rounded-xl" onClick={(e)=>handleClick(e)}>
-            <img className="shortcut-img mx-auto" src={sites[0] ? setSrc(sites[0]):favicon} alt="shortcut-button" id="0" onError={favicon}/>
+            <img className="shortcut-img mx-auto" src={sites[0] ? setSrc(sites[0]):favicon} alt="shortcut-button" id="0" onError={"this.style.display='none"}/>
         </button>
         <button className="shortcut-button rounded-xl"  onClick={(e)=>handleClick(e)}>
-            <img className="shortcut-img mx-auto" src={sites[1] ? setSrc(sites[1]):favicon} alt="shortcut-button" id="1" onError={favicon}/>
+            <img className="shortcut-img mx-auto" src={sites[1] ? setSrc(sites[1]):favicon} alt="shortcut-button" id="1" onError={"this.style.display='none"}/>
         </button>
         <button className="shortcut-button rounded-xl"  onClick={(e)=>handleClick(e)}>
-            <img className="shortcut-img mx-auto" src={sites[2] ? setSrc(sites[2]):favicon} alt="shortcut-button" id="2" onError={favicon}/>
+            <img className="shortcut-img mx-auto" src={sites[2] ? setSrc(sites[2]):favicon} alt="shortcut-button" id="2" onError={"this.style.display='none"}/>
         </button>
       </div>
       {modalOpen ? (
