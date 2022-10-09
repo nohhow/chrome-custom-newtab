@@ -21,13 +21,14 @@ function Shortcut() {
     localStorage.setItem("shortcut-sites", JSON.stringify(new_sites));
   }
 
-  const handleClick = (e) => {
-    if(!sites[e.target.id]){
-      setIndex(e.target.id);
-      setModalOpen(true);
-    }else{
-      window.location.href = sites[e.target.id];
-    }
+  const handleEditOpen = (e) => {
+    setValue(sites[e.target.id]);
+    setIndex(e.target.id);
+    setModalOpen(true);
+  }
+  
+  const handleSiteOpen = (e) => {
+    window.location.href = sites[e.target.id];
   }
   
   const setSrc = (url) => {
@@ -36,18 +37,21 @@ function Shortcut() {
     return result_url+'/favicon.ico';
   }
 
+  const handleImgErr = (e) =>{
+    e.target.src = favicon;
+  }
   return (
     <div className="w-96 p-6 bg-white rounded shadow-sm m-4">
       <h1 className="mb-3">바로 가기</h1>
       <div className="flex justify-between">
-        <button className="shortcut-button rounded-xl" onClick={(e)=>handleClick(e)}>
-            <img className="shortcut-img mx-auto" src={sites[0] ? setSrc(sites[0]):favicon} alt="shortcut-button" id="0" onError={"this.style.display='none"}/>
+        <button className="shortcut-button rounded-xl" onClick={(e)=>handleEditOpen(e)} id="0">
+            <img className="shortcut-img mx-auto" onClick={(e)=>handleSiteOpen(e)} src={sites[0] ? setSrc(sites[0]):favicon} onError={handleImgErr} alt="shortcut-button" id="0" />
         </button>
-        <button className="shortcut-button rounded-xl"  onClick={(e)=>handleClick(e)}>
-            <img className="shortcut-img mx-auto" src={sites[1] ? setSrc(sites[1]):favicon} alt="shortcut-button" id="1" onError={"this.style.display='none"}/>
+        <button className="shortcut-button rounded-xl"  onClick={(e)=>handleEditOpen(e)} id="1">
+            <img className="shortcut-img mx-auto" onClick={(e)=>handleSiteOpen(e)} src={sites[1] ? setSrc(sites[1]):favicon} onError={handleImgErr} alt="shortcut-button" id="1" />
         </button>
-        <button className="shortcut-button rounded-xl"  onClick={(e)=>handleClick(e)}>
-            <img className="shortcut-img mx-auto" src={sites[2] ? setSrc(sites[2]):favicon} alt="shortcut-button" id="2" onError={"this.style.display='none"}/>
+        <button className="shortcut-button rounded-xl"  onClick={(e)=>handleEditOpen(e)} id="2">
+            <img className="shortcut-img mx-auto" onClick={(e)=>handleSiteOpen(e)} src={sites[2] ? setSrc(sites[2]):favicon} onError={handleImgErr} alt="shortcut-button" id="2" />
         </button>
       </div>
       {modalOpen ? (
