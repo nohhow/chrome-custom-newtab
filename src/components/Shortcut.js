@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import favicon from "../image/favicon.png";
+import bookmarkImg from "../image/bookmark.png";
 import ShortcutModal from "./ShortcutModal/ShortcutModal";
 
 function Shortcut() {
@@ -38,7 +39,7 @@ function Shortcut() {
   }
 
   const handleImgErr = (e) =>{
-    e.target.src = favicon;
+    e.target.src = bookmarkImg;
   }
   return (
     <div className="w-96 p-6 bg-white rounded shadow-sm m-4">
