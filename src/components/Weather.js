@@ -9,7 +9,7 @@ function Weather() {
   const [display, setDisplay] = useState(true);
 
   const getWeatherData = async (city) => {
-    if(city == "") return;
+    if(city === "") return;
     const response = await axios.get(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API}`
     );
