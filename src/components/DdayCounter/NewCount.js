@@ -43,10 +43,10 @@ function NewCount() {
       <div className="flex justify-between mb-2">
         <h1 className="mb-3">{ddayTitle}</h1>
         <button
-          className="p-2 text-white bg-red-200 hover:bg-red-400 shadow-md rounded"
+          className="p-2 text-white bg-gray-200 hover:bg-gray-400 shadow-md rounded"
           onClick={handleDelete} visible={deadLine !== "" ? true : false}
         >
-          X
+        ⚙️
         </button>
       </div>
 
