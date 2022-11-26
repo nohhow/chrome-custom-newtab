@@ -20,7 +20,8 @@ function NewCount() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setDeadLine(startDate);
+    let offset = startDate.getTimezoneOffset() * 60000; //ms단위라 60000곱해줌
+    setDeadLine(new Date(startDate.getTime() - offset));
     setDdayTitle(value);
     localStorage.setItem("deadLine", JSON.stringify(startDate));
     localStorage.setItem("ddayTitle", JSON.stringify(value));
