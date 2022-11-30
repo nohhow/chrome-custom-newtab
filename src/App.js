@@ -19,7 +19,7 @@ function App() {
       <div className="flex flex-row justify-center">
         <div>
           <Weather />
-          <GitContributionGraph />
+          {/* <GitContributionGraph /> */}
           <NewCount />
           <Todo />
         </div>
