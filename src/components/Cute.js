@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 function Cute() {
   const [meowImage, setMeowImage] = useState("");
   const getMeow = async () => {
-    const response = await axios.get("https://aws.random.cat/meow");
-    setMeowImage(response.data.file);
+    const response = await axios.get("https://api.thecatapi.com/v1/images/search");
+    setMeowImage(response.data[0].url);
   };
 
   useEffect(() => {
