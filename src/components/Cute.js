@@ -4,7 +4,9 @@ import React, { useEffect, useState } from "react";
 function Cute() {
   const [meowImage, setMeowImage] = useState("");
   const getMeow = async () => {
-    const response = await axios.get("https://api.thecatapi.com/v1/images/search");
+    const response = await axios.get(
+      "https://api.thecatapi.com/v1/images/search"
+    );
     setMeowImage(response.data[0].url);
   };
 
@@ -14,8 +16,14 @@ function Cute() {
 
   return (
     <div className="w-96 p-6 bg-white rounded shadow-sm m-4">
-      <div className="flex justify-between mb-3 items-center">
-        <h1>귀여움 충전</h1>
+      <div className="flex justify-between mb-2">
+        <h1 className="mb-3">귀여움 충전</h1>
+        <button
+          className="p-2 text-white bg-gray-200 hover:bg-gray-400 shadow-md rounded"
+          onClick={()=>{getMeow()}}
+        >
+          다른거!
+        </button>
       </div>
       <div>
         {meowImage !== "" ? (
