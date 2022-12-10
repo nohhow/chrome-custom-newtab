@@ -62,7 +62,7 @@ function NewCount() {
           <form onSubmit={handleSubmit} className="flex pt-2">
             <input
               type="text"
-              name="value"
+              name="dday"
               className="w-full px-3 py-2 mr-4 text-gray-500 border rounded shadow"
               placeholder="D-day는 어떤 날인가요?"
               value={value}

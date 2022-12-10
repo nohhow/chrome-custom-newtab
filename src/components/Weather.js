@@ -9,7 +9,7 @@ function Weather() {
   const [display, setDisplay] = useState(true);
 
   const getWeatherData = async (city) => {
-    if(city === "") return;
+    if (city === "") return;
     const response = await axios.get(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API}`
     );
@@ -38,6 +38,10 @@ function Weather() {
     modalClose();
   };
 
+  const getWeatherIconSrc = (icon) => {
+    return `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  };
+
   useEffect(() => {
     const localData = localStorage.getItem("cityName");
     const initialData = JSON.parse(localData);
@@ -58,10 +62,24 @@ function Weather() {
         </button>
       </div>
       <p>
-        {weatherData ? weatherData.weather[0].main : "Loading..."},{" "}
-        <span className="text-xl">
-          {weatherData ? Math.floor(weatherData.main.temp - 273.15) : 0}°C
-        </span>
+        {weatherData && (
+          <div className="flex justify-start">
+            <div>
+              <img
+                src={getWeatherIconSrc(weatherData.weather[0].icon)}
+                alt={weatherData.weather[0].main}
+                width="50px"
+              />
+            </div>
+            <div>
+              <span>{weatherData.weather[0].main}</span>
+              ,{" "}
+              <span className="text-xl">
+                {weatherData ? Math.floor(weatherData.main.temp - 273.15) : 0}°C
+              </span>
+            </div>
+          </div>
+        )}
       </p>
 
       <div
