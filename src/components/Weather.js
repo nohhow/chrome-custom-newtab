@@ -61,7 +61,7 @@ function Weather() {
           ⚙️
         </button>
       </div>
-      <p>
+      <div>
         {weatherData && (
           <div className="flex justify-start">
             <div>
@@ -80,7 +80,7 @@ function Weather() {
             </div>
           </div>
         )}
-      </p>
+      </div>
 
       <div
         id="defaultModal"

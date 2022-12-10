@@ -45,7 +45,7 @@ function NewCount() {
         <h1 className="mb-3">{ddayTitle}</h1>
         <button
           className="p-2 text-white bg-gray-200 hover:bg-gray-400 shadow-md rounded"
-          onClick={handleDelete} visible={deadLine !== "" ? true : false}
+          onClick={handleDelete}
         >
         ⚙️
         </button>
