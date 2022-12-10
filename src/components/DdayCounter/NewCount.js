@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 function NewCount() {
   const [deadLine, setDeadLine] = useState(() => {
     const localData = localStorage.getItem("deadLine");
-    const initialData = JSON.parse(localData);
+    const initialData = localData;
     return initialData ? initialData : "";
   });
   const [ddayTitle, setDdayTitle] = useState(() => {
@@ -16,14 +16,17 @@ function NewCount() {
   });
   
   const [value, setValue] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(()=>{
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    return today;
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let offset = startDate.getTimezoneOffset() * 60000; //ms단위라 60000곱해줌
-    setDeadLine(new Date(startDate.getTime() - offset));
+    setDeadLine(startDate);
     setDdayTitle(value);
-    localStorage.setItem("deadLine", JSON.stringify(startDate));
+    localStorage.setItem("deadLine", startDate);
     localStorage.setItem("ddayTitle", JSON.stringify(value));
   };
 
@@ -55,6 +58,8 @@ function NewCount() {
         <div>
           <DatePicker
             selected={startDate}
+            dateFormat={"yyyy-MM-dd"}
+            placeholderText={"D-DAY 날짜 선택"}
             onChange={(date) => {
               setStartDate(date);
             }}
@@ -77,7 +82,7 @@ function NewCount() {
         </div>
       ) : (
         <div>
-          <div className="mb-3">{deadLine}</div>
+          <div className="mb-3">{new Intl.DateTimeFormat("ko").format(new Date(deadLine))}</div>
           <NewClock deadline={deadLine} />
         </div>
       )}
