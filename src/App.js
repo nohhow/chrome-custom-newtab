@@ -15,19 +15,19 @@ function App() {
   const [visible, setVisible] = useState(() => {
     const localData = localStorage.getItem("visible");
     const initialData = JSON.parse(localData);
-    return initialData
-      ? initialData
-      : {
-          weather: true,
-          newCount: true,
-          toDo: true,
-          phrase: true,
-          cute: true,
-          youtube: true,
-          topSite: true,
-          shortcut: true,
-          coutningLetters: true,
-        };
+    const widgetList = {
+      "날씨": true,
+      "D-Day": true,
+      "할 일": true,
+      "명언": true,
+      "귀여움 충전": true,
+      "유튜브": true,
+      "자주 방문한 사이트": true,
+      "바로가기": true,
+      "글자수 세기": true,
+    }
+    if(JSON.stringify(Object.keys(initialData)) === JSON.stringify(Object.keys(widgetList))) return initialData;
+    else return widgetList;
   });
 
   const [display, setDisplay] = useState(true);
@@ -58,20 +58,20 @@ function App() {
       </h1>
       <div className="flex flex-row justify-center">
         <div>
-          {visible.weather ? <Weather /> : ""}
+          {visible["날씨"] ? <Weather /> : ""}
           {/* <GitContributionGraph /> */}
-          {visible.newCount ? <NewCount /> : ""}
-          {visible.toDo ? <Todo /> : ""}
+          {visible["D-Day"] ? <NewCount /> : ""}
+          {visible["할 일"] ? <Todo /> : ""}
         </div>
         <div>
-          {visible.phrase ? <Phrase /> : ""}
-          {visible.cute ? <Cute /> : ""}
+          {visible["명언"] ? <Phrase /> : ""}
+          {visible["귀여움 충전"] ? <Cute /> : ""}
         </div>
         <div>
-          {visible.youtube ? <Youtube /> : ""}
-          {visible.topSite ? <TopSite /> : ""}
-          {visible.shortcut ? <Shortcut /> : ""}
-          {visible.countingLetters ? <CountingLetters /> : ""}
+          {visible["유튜브"] ? <Youtube /> : ""}
+          {visible["자주 방문한 사이트"] ? <TopSite /> : ""}
+          {visible["바로가기"] ? <Shortcut /> : ""}
+          {visible["글자수 세기"] ? <CountingLetters /> : ""}
         </div>
       </div>
 

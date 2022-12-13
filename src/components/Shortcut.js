@@ -31,12 +31,12 @@ function Shortcut() {
   const handleMouseOver = (e) => {
     const el = e.target;
     el.classList.remove("opacity-0");
-    el.classList.add("opacity-100");
+    el.classList.add("opacity-80");
   }
   
   const handleMouseOut = (e) => {
     const el = e.target;
-    el.classList.remove("opacity-100");
+    el.classList.remove("opacity-80");
     el.classList.add("opacity-0");
   }
 
