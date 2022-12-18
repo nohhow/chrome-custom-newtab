@@ -26,7 +26,7 @@ function App() {
       "바로가기": true,
       "글자수 세기": true,
     }
-    if(JSON.stringify(Object.keys(initialData)) === JSON.stringify(Object.keys(widgetList))) return initialData;
+    if(initialData && JSON.stringify(Object.keys(initialData)) === JSON.stringify(Object.keys(widgetList))) return initialData;
     else return widgetList;
   });
 
