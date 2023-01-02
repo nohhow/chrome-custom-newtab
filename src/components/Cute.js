@@ -3,10 +3,13 @@ import React, { useEffect, useState } from "react";
 
 function Cute() {
   const [meowImage, setMeowImage] = useState("");
+  const [cuteApi, setCuteApi] = useState(() => {
+    const localData = localStorage.getItem("cuteApi");
+    const initialData = JSON.parse(localData);
+    return initialData ? initialData : "https://api.thecatapi.com/v1/images/search";
+  })
   const getMeow = async () => {
-    const response = await axios.get(
-      "https://api.thecatapi.com/v1/images/search"
-    );
+    const response = await axios.get(cuteApi);
     setMeowImage(response.data[0].url);
   };
 
