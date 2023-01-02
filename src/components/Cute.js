@@ -2,16 +2,36 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 function Cute() {
+  const cuties = [
+    { id:0, type: "cat", url: "https://api.thecatapi.com/v1/images/search", prop: [] },
+    { id:1, type: "dog", url: "https://dog.ceo/api/breeds/image/random" },
+    { id:2, type: "duck", url: "https://random-d.uk/api/random" },
+  ];
+
   const [meowImage, setMeowImage] = useState("");
-  const [cuteApi, setCuteApi] = useState(() => {
-    const localData = localStorage.getItem("cuteApi");
+  const [cutie, setCutie] = useState(() => {
+    const localData = localStorage.getItem("cutie");
     const initialData = JSON.parse(localData);
-    return initialData ? initialData : "https://api.thecatapi.com/v1/images/search";
-  })
-  const getMeow = async () => {
-    const response = await axios.get(cuteApi);
-    setMeowImage(response.data[0].url);
+    return initialData
+      ? initialData
+      : cuties[0];
+  });
+
+  const getMeow = async (param) => {
+    const response = await axios.get(param? param.url : cutie.url);
+    const resData = response.data;
+    setMeowImage(resData.hasOwnProperty("url") ? resData.url : resData.hasOwnProperty("message") ? resData.message : resData[0].url);
   };
+
+  const handleSwitchBtn = (e) => {
+    const dir = e.target.id;
+    let value = 0;
+    if(dir === "left-btn" && cutie.id > 0){value = -1};
+    if(dir === "right-btn" && cutie.id < cuties.length-1){value = 1};
+    setCutie(cuties[cutie.id+value]);
+    localStorage.setItem("cutie", JSON.stringify(cuties[cutie.id+value]));
+    getMeow(cuties[cutie.id+value]);
+  }
 
   useEffect(() => {
     getMeow();
@@ -21,9 +41,16 @@ function Cute() {
     <div className="w-96 p-6 bg-white rounded shadow-sm m-4">
       <div className="flex justify-between mb-2">
         <h1 className="mb-3">귀여움 충전</h1>
+        <div className="text-sm m-auto">
+          <button id="left-btn" onClick={(e)=>handleSwitchBtn(e)}>◀︎</button>
+          <span> {cutie.type} </span>
+          <button id="right-btn" onClick={(e)=>handleSwitchBtn(e)}>▶︎</button>
+        </div>
         <button
           className="p-2 text-white bg-gray-200 hover:bg-gray-400 shadow-md rounded"
-          onClick={()=>{getMeow()}}
+          onClick={() => {
+            getMeow();
+          }}
         >
           다른거!
         </button>
