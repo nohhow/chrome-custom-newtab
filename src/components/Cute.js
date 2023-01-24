@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 
 function Cute() {
   const cuties = [
-    { id:0, type: "cat", url: "https://api.thecatapi.com/v1/images/search", prop: [] },
-    { id:1, type: "dog", url: "https://dog.ceo/api/breeds/image/random" },
-    { id:2, type: "duck", url: "https://random-d.uk/api/random" },
+    { id:0, type: "cat", url: "https://api.thecatapi.com/v1/images/search" },     //url
+    { id:1, type: "dog", url: "https://dog.ceo/api/breeds/image/random" },        //message
+    { id:2, type: "pikachu", url: "https://some-random-api.ml/img/pikachu" },     //link
+    { id:3, type: "red-panda", url: "https://some-random-api.ml/img/red_panda" }, //link
   ];
 
   const [meowImage, setMeowImage] = useState("");
@@ -20,7 +21,7 @@ function Cute() {
   const getMeow = async (param) => {
     const response = await axios.get(param? param.url : cutie.url);
     const resData = response.data;
-    setMeowImage(resData.hasOwnProperty("url") ? resData.url : resData.hasOwnProperty("message") ? resData.message : resData[0].url);
+    setMeowImage(resData.hasOwnProperty("url") ? resData.url : resData.hasOwnProperty("message") ? resData.message : resData.hasOwnProperty("link") ? resData.link : resData[0].url); //property 찾기 (url -> message -> link 순)
   };
 
   const handleSwitchBtn = (e) => {

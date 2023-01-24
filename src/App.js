@@ -69,7 +69,7 @@ function App() {
         </div>
         <div>
           {visible["유튜브"] ? <Youtube /> : ""}
-          {visible["자주 방문한 사이트"] ? <TopSite /> : ""}
+          {/* {visible["자주 방문한 사이트"] ? <TopSite /> : ""} */}
           {visible["바로가기"] ? <Shortcut /> : ""}
           {visible["글자수 세기"] ? <CountingLetters /> : ""}
         </div>
