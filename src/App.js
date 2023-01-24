@@ -17,6 +17,7 @@ function App() {
     const initialData = JSON.parse(localData);
     const widgetList = {
       "날씨": true,
+      "Git 기여 그래프": true,
       "D-Day": true,
       "할 일": true,
       "명언": true,
@@ -59,7 +60,7 @@ function App() {
       <div className="flex flex-row justify-center">
         <div>
           {visible["날씨"] ? <Weather /> : ""}
-          {/* <GitContributionGraph /> */}
+          {visible["Git 기여 그래프"] ? <GitContributionGraph /> : ""}
           {visible["D-Day"] ? <NewCount /> : ""}
           {visible["할 일"] ? <Todo /> : ""}
         </div>
