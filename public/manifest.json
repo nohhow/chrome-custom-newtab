@@ -1,7 +1,7 @@
 {
   "name": "크롬 새 탭 커스텀",
   "description": "다양한 모듈로 나만의 새 탭을 만들 수 있어요.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "short_name": "확장프로그램",
   "icons": {
     "16": "icon16.png",
