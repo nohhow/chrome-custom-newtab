@@ -5,6 +5,7 @@ import cityList from "../util/city.list.json";
 function Weather() {
   const [cityName, setCityName] = useState();
   const [weatherData, setWeatherData] = useState();
+  const [airPollutionData, setAirPollutionData] = useState();
   const [cityData, setCityData] = useState([]);
   const [display, setDisplay] = useState(true);
 
@@ -14,6 +15,15 @@ function Weather() {
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API}`
     );
     setWeatherData(response.data);
+    getAirPollutionData(response.data.coord);
+  };
+
+  const getAirPollutionData = async (coord) => {
+    if (!coord) return;
+    const response = await axios.get(
+      `http://api.openweathermap.org/data/2.5/air_pollution?lat=${coord.lat}&lon=${coord.lon}&appid=${process.env.REACT_APP_WEATHER_API}`
+    );
+    setAirPollutionData(response.data.list[0]);
   };
 
   const modalOpen = () => {
@@ -42,6 +52,41 @@ function Weather() {
     return `http://openweathermap.org/img/wn/${icon}@2x.png`;
   };
 
+  const getMsgOrColor = (aqi, type) => {
+    let msg = "로딩중...";
+    let color = "bg-gray-700";
+
+    switch (aqi) {
+      case 1:
+        msg = "매우 좋음"
+        color = "bg-blue-800"
+        break;
+      case 2:
+        msg = "좋음"
+        color = "bg-green-900"
+        break;
+      case 3:
+        msg = "보통"
+        color = "bg-gray-500"
+        break;
+      case 4:
+        msg = "나쁨"
+        color = "bg-yellow-900"
+        break;
+      case 5:
+        msg = "매우 나쁨"
+        color = "bg-red-900"
+        break;
+      default:
+        break;
+    }
+    if(type === "msg"){
+      return msg;
+    }else if(type === "color"){
+      return color;
+    }
+  }
+
   useEffect(() => {
     const localData = localStorage.getItem("cityName");
     const initialData = JSON.parse(localData);
@@ -63,21 +108,24 @@ function Weather() {
       </div>
       <div>
         {weatherData && (
-          <div className="flex justify-start">
-            <div>
-              <img
-                src={getWeatherIconSrc(weatherData.weather[0].icon)}
-                alt={weatherData.weather[0].main}
-                width="50px"
-              />
+          <div>
+            <div className="flex justify-start">
+              <div>
+                <img
+                  src={getWeatherIconSrc(weatherData.weather[0].icon)}
+                  alt={weatherData.weather[0].main}
+                  width="50px"
+                />
+              </div>
+              <div>
+                <span>{weatherData.weather[0].main}</span>,{" "}
+                <span className="text-xl">
+                  {weatherData ? Math.floor(weatherData.main.temp - 273.15) : 0}
+                  °C
+                </span>
+              </div>
             </div>
-            <div>
-              <span>{weatherData.weather[0].main}</span>
-              ,{" "}
-              <span className="text-xl">
-                {weatherData ? Math.floor(weatherData.main.temp - 273.15) : 0}°C
-              </span>
-            </div>
+            <p className={`${getMsgOrColor(airPollutionData ? airPollutionData.main.aqi : "", "color")} mt-2 text-white text-xs font-medium mr-2 px-2.5 py-0.5 rounded`}>대기질 : {getMsgOrColor(airPollutionData ? airPollutionData.main.aqi : "", "msg")}</p>
           </div>
         )}
       </div>
