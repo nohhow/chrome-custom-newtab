@@ -63,7 +63,8 @@ function NewCount() {
             onChange={(date) => {
               setStartDate(date);
             }}
-          />
+          /> 
+          <span>👆 D-day로 설정할 날짜 선택</span>
           <form onSubmit={handleSubmit} className="flex pt-2">
             <input
               type="text"
