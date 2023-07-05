@@ -45,7 +45,7 @@ function NewCount() {
   return (
     <div className="w-96 p-6 bg-white rounded shadow-sm m-4">
       <div className="flex justify-between mb-2">
-        <h1 className="mb-3">{ddayTitle}</h1>
+        <h1 className="mb-3">{ddayTitle ? ddayTitle : "D-day"}</h1>
         <button
           className="p-2 text-white bg-gray-200 hover:bg-gray-400 shadow-md rounded"
           onClick={handleDelete}
