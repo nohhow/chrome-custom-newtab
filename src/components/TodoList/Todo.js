@@ -1,8 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Form from "./Form";
 import Lists from "./Lists";
+import WidgetWrapper from "../WidgetWrapper";
+import { detectLanguage, getWidgetName, getCommonText } from "../../utils/messages";
 
 function Todo() {
+  const currentLang = detectLanguage();
   const [todoData, setTodoData] = useState(() => {
     const localData = localStorage.getItem("todoData");
     const initialData = JSON.parse(localData);
@@ -13,7 +16,6 @@ function Todo() {
   const handleClick = useCallback(
     (id) => {
       let newTodoData = todoData.filter((data) => data.id !== id);
-      console.log("newTodoData", newTodoData);
       setTodoData(newTodoData);
     },
     [todoData]
@@ -44,24 +46,31 @@ function Todo() {
     localStorage.setItem("todoData", JSON.stringify(todoData));
   }, [todoData]);
   return (
-    <div className="w-96 p-6 bg-white rounded shadow-sm m-4">
-      <div className="flex justify-between mb-3 items-center">
-        <h1>할 일 목록</h1>
+    <WidgetWrapper 
+      title={getWidgetName("할 일", currentLang)}
+      headerActions={
         <button
-          className="p-2 text-white bg-red-200 hover:bg-red-400 shadow-md rounded"
+          className="
+            group px-3 py-1.5 rounded-lg text-sm font-medium
+            bg-red-100/50 hover:bg-red-200/50 text-red-700
+            transition-all duration-200 ease-out
+            hover:scale-105 active:scale-95
+          "
           onClick={handleDeleteAll}
         >
-          전체삭제
+          {getCommonText("deleteAll", currentLang)}
         </button>
+      }
+    >
+      <div className="space-y-4">
+        <Lists
+          todoData={todoData}
+          setTodoData={setTodoData}
+          handleClick={handleClick}
+        />
+        <Form setValue={setValue} value={value} handleSubmit={handleSubmit} currentLang={currentLang} />
       </div>
-
-      <Lists
-        todoData={todoData}
-        setTodoData={setTodoData}
-        handleClick={handleClick}
-      />
-      <Form setValue={setValue} value={value} handleSubmit={handleSubmit} />
-    </div>
+    </WidgetWrapper>
   );
 }
 

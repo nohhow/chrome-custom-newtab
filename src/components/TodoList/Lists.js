@@ -7,7 +7,6 @@ export const Lists = React.memo(({ todoData, setTodoData, handleClick }) => {
 
   const handleEnd = (result) => {
     //result 매개변수에는 source 항목 및 대상 위치와 같은 드래그 이벤트에 대한 정보가 포함 된다.
-      console.log(result);
 
     // 목적지가 없으면(이벤트 취소) 이 함수를 종료
     if (!result.destination) return;
@@ -19,8 +18,6 @@ export const Lists = React.memo(({ todoData, setTodoData, handleClick }) => {
     //2. return 값으로 지워진 아이템을 집어준다.
     const [reorderedItem] = newTodoData.splice(result.source.index, 1);
 
-    console.log(reorderedItem);
-    console.log(typeof(reorderedItem));
   
     // 원하는 자리에 reorderItem을 insert 해준다.
     newTodoData.splice(result.destination.index, 0, reorderedItem);
